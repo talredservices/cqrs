@@ -80,11 +80,11 @@ WorkerAwareRoutingCommandBus
 
 | Package | Layer | Purpose |
 |---------|-------|---------|
-| **zolta-forge** | Domain | Value Objects, Entities, Rules, Specifications |
-| **zolta-cqrs** | Application | Commands, Queries, Events, Repositories, Transactions |
-| **zolta-http** | API | Routing, Request/Response, Authorization |
+| **talred/forge** | Domain | Value Objects, Entities, Rules, Specifications |
+| **talred/cqrs** | Application | Commands, Queries, Events, Repositories, Transactions |
+| **talred/http** | API | Routing, Request/Response, Authorization |
 
-Zolta CQRS builds on top of zolta-forge's domain primitives and provides the application-layer orchestration consumed by zolta-http's API handlers.
+Zolta CQRS builds on top of talred/forge's domain primitives and provides the application-layer orchestration consumed by talred/http's API handlers.
 
 ## Key features
 

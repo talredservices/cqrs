@@ -1,5 +1,5 @@
 {
-	"name": "zolta/cqrs",
+	"name": "talred/cqrs",
 	"description": "CQRS application layer for PHP 8.2+ with command/query buses, decorator-based middleware pipeline, Result/Option monads, repository abstractions with caching, transaction management, domain event dispatching, and automatic handler discovery via attributes.",
 	"type": "library",
 	"license": "MIT",
@@ -31,7 +31,7 @@
 		"symfony/serializer": "^7.3",
 		"symfony/property-access": "^7.3",
 		"symfony/property-info": "^7.3",
-		"zolta/forge": "^1.0"
+		"talred/forge": "^1.0"
 	},
 	"require-dev": {
 		"mockery/mockery": "^1.6",

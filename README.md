@@ -50,7 +50,7 @@ Zolta CQRS occupies a pragmatic middle ground: you get clean command/query separ
 ## Install
 
 ```bash
-composer require zolta/cqrs
+composer require talred/cqrs
 ```
 
 Laravel auto-discovers the service provider. No manual registration needed.
@@ -366,13 +366,13 @@ Zolta CQRS is the **application layer** — it bridges domain logic and transpor
 
 ```
 ┌─────────────────────────────────────────────┐
-│  zolta/http (Transport)                     │
+│  talred/http (Transport)                    │
 │  Attribute-driven routing & response        │
 ├─────────────────────────────────────────────┤
-│  zolta/cqrs (Application) ← you are here   │
+│  talred/cqrs (Application) ← you are here  │
 │  Commands, queries, events, transactions    │
 ├─────────────────────────────────────────────┤
-│  zolta/forge (Domain)                       │
+│  talred/forge (Domain)                      │
 │  Value Objects, rules, specs, entities      │
 └─────────────────────────────────────────────┘
 ```
@@ -381,9 +381,9 @@ When used together: **HTTP** resolves the pipeline via attributes → **Forge** 
 
 | Package        | Layer           | Link                               |
 | -------------- | --------------- | ---------------------------------- |
-| zolta/forge    | Domain          | [`packages/forge`](../zolta-forge) |
-| **zolta/cqrs** | **Application** | You are here                       |
-| zolta/http     | Transport       | [`packages/http`](../zolta-http)   |
+| talred/forge    | Domain          | [`packages/forge`](../zolta-forge) |
+| **talred/cqrs** | **Application** | You are here                       |
+| talred/http     | Transport       | [`packages/http`](../zolta-http)   |
 
 ---
 

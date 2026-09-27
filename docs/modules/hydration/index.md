@@ -66,7 +66,7 @@ class CreateOrderCommand extends Command
 
 **2. Value Object hydration**
 
-If the target extends `ValueObject` from zolta-forge, the hydrator uses `resolve()`:
+If the target extends `ValueObject` from talred/forge, the hydrator uses `resolve()`:
 
 ```php
 // Automatically hydrated via ValueObject::resolve()

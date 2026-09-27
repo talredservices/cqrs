@@ -13,12 +13,12 @@ navigation:
 - PHP 8.2 or higher
 - Composer 2.x
 - Laravel 10+ (for the Laravel adapter)
-- `zolta/forge` (domain layer dependency)
+- `talred/forge` (domain layer dependency)
 
 ## Installation
 
 ```bash
-composer require zolta/cqrs
+composer require talred/cqrs
 ```
 
 The package auto-discovers the Laravel service provider via Composer's `extra.laravel` metadata. No manual registration is needed.
@@ -62,7 +62,7 @@ A recommended DDD project structure with Zolta CQRS:
 
 ```
 app/
-├── Domain/                     # zolta-forge layer
+├── Domain/                     # talred/forge layer
 │   ├── Aggregates/
 │   │   └── User.php
 │   ├── ValueObjects/
@@ -73,7 +73,7 @@ app/
 │   └── Repositories/
 │       └── UserRepositoryInterface.php
 │
-├── Application/                # zolta-cqrs layer
+├── Application/                # talred/cqrs layer
 │   ├── Commands/
 │   │   ├── CreateUser/
 │   │   │   ├── CreateUserCommand.php
@@ -98,7 +98,7 @@ app/
 │   └── Events/
 │       └── UserCreatedListener.php
 │
-└── Http/                       # zolta-http layer
+└── Http/                       # talred/http layer
     └── Controllers/
         └── UserController.php
 ```

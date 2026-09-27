@@ -19,7 +19,7 @@ This project adheres to Semantic Versioning.
 
 ### Changed
 - Updated CQRS configuration publishing to use the `zolta-cqrs-config` tag
-- Restored the released `zolta/forge ^1.0` dependency constraint for package consumers
+- Restored the released `talred/forge ^1.0` dependency constraint for package consumers
 
 ### Deprecated
 - Top-level `zolta.*` CQRS configuration keys remain supported for backwards compatibility; new applications should use `zolta.cqrs.*`

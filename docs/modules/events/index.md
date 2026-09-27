@@ -65,7 +65,7 @@ This dispatcher forwards events to all registered sub-dispatchers, allowing inte
 
 ## Defining domain events
 
-Domain events implement `EventInterface` from zolta-forge:
+Domain events implement `EventInterface` from talred/forge:
 
 ```php
 <?php
