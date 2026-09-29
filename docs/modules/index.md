@@ -1,6 +1,6 @@
 ---
 title: Modules
-description: Overview of all Zolta CQRS modules and their interactions.
+description: Overview of all Talred CQRS modules and their interactions.
 navigation:
   title: Modules
   order: 2
@@ -8,7 +8,7 @@ navigation:
 
 # Modules
 
-Zolta CQRS is organized into focused modules that work together to provide a complete application-layer framework.
+Talred CQRS is organized into focused modules that work together to provide a complete application-layer framework.
 
 ## Module map
 

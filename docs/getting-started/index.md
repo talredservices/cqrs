@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-description: Installation and first steps with Zolta CQRS.
+description: Installation and first steps with Talred CQRS.
 navigation:
   title: Getting Started
   order: 1
@@ -20,6 +20,11 @@ navigation:
 ```bash
 composer require talred/cqrs
 ```
+
+Use `Talred\Cqrs\...` namespaces in new code. Existing `Zolta\Cqrs\...`
+imports remain supported by the compatibility layer while the package is
+migrated in stages. The Laravel publish tag and `config/zolta.php` filename
+remain technical compatibility identifiers.
 
 The package auto-discovers the Laravel service provider via Composer's `extra.laravel` metadata. No manual registration is needed.
 
@@ -58,7 +63,7 @@ Existing top-level CQRS settings, such as `zolta.commands` and `zolta.cache`, re
 
 ## Project structure
 
-A recommended DDD project structure with Zolta CQRS:
+A recommended DDD project structure with Talred CQRS:
 
 ```
 app/
@@ -114,7 +119,7 @@ declare(strict_types=1);
 
 namespace App\Application\Commands\CreateUser;
 
-use Zolta\Cqrs\Commands\Command;
+use Talred\Cqrs\Commands\Command;
 
 class CreateUserCommand extends Command
 {
@@ -141,8 +146,8 @@ use App\Domain\ValueObjects\Email;
 use App\Domain\ValueObjects\HashedPassword;
 use App\Domain\ValueObjects\UserId;
 use App\Domain\ValueObjects\Username;
-use Zolta\Cqrs\Attributes\HandlesCommand;
-use Zolta\Cqrs\Services\Result;
+use Talred\Cqrs\Attributes\HandlesCommand;
+use Talred\Cqrs\Services\Result;
 
 #[HandlesCommand(CreateUserCommand::class)]
 class CreateUserHandler
@@ -197,7 +202,7 @@ declare(strict_types=1);
 
 namespace App\Application\Queries\GetUser;
 
-use Zolta\Cqrs\Queries\Query;
+use Talred\Cqrs\Queries\Query;
 
 class GetUserQuery extends Query
 {
@@ -217,8 +222,8 @@ declare(strict_types=1);
 namespace App\Application\Queries\GetUser;
 
 use App\Domain\Repositories\UserRepositoryInterface;
-use Zolta\Cqrs\Attributes\HandlesQuery;
-use Zolta\Cqrs\Services\Option;
+use Talred\Cqrs\Attributes\HandlesQuery;
+use Talred\Cqrs\Services\Option;
 
 #[HandlesQuery(GetUserQuery::class)]
 class GetUserHandler

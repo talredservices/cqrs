@@ -4,7 +4,7 @@
 	"type": "library",
 	"license": "MIT",
 	"keywords": [
-		"zolta",
+		"talred",
 		"cqrs",
 		"command",
 		"query",
@@ -50,8 +50,12 @@
             "Zolta\\Cqrs\\Support\\": "src/Support/"
 		},
         "files": [
+			"src/Compatibility/talred-cqrs-aliases.php",
 			"src/Support/helpers.php"
 		]
+	},
+	"replace": {
+		"zolta/cqrs": "self.version"
 	},
 	"autoload-dev": {
 		"psr-4": {

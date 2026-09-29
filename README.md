@@ -1,4 +1,4 @@
-# Zolta CQRS
+# Talred CQRS
 
 [![PHP Version](https://img.shields.io/badge/PHP-8.2+-blue.svg)](https://php.net/)
 [![PHPStan Level](https://img.shields.io/badge/PHPStan-Level%206-brightgreen.svg)](https://phpstan.org/)
@@ -20,13 +20,13 @@ $result = $cqrs->dispatch(new CreateUserCommand(
 
 ---
 
-## Why Zolta CQRS?
+## Why Talred CQRS?
 
 ### The problem
 
 Laravel gives you Eloquent, queues, and events — excellent infrastructure. But the **application architecture layer** between "HTTP request" and "database query" is left as a DIY exercise. Most teams end up with fat controllers, service classes that mix concerns, and event handling scattered across listeners. Testing is painful because business logic is tangled with framework code.
 
-### What Zolta CQRS does differently
+### What Talred CQRS does differently
 
 | Approach              | How it works                                                           | Trade-off                                                    |
 | --------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------ |
@@ -34,9 +34,9 @@ Laravel gives you Eloquent, queues, and events — excellent infrastructure. But
 | Broadway              | Event sourcing toolkit                                                 | Requires event sourcing commitment                           |
 | Spatie Event Sourcing | Laravel event sourcing                                                 | Event-sourcing only, no command/query separation             |
 | Tactician             | Simple command bus                                                     | Command-only, no queries, no Result monads, no orchestration |
-| **Zolta CQRS**        | **Decorator-based buses + monads + Application Service orchestration** | **Pragmatic CQRS without event sourcing tax**                |
+| **Talred CQRS**        | **Decorator-based buses + monads + Application Service orchestration** | **Pragmatic CQRS without event sourcing tax**                |
 
-Zolta CQRS occupies a pragmatic middle ground: you get clean command/query separation, type-safe results, automatic event dispatching, and transactional orchestration — without being forced into full event sourcing. Use as much or as little as your project needs.
+Talred CQRS occupies a pragmatic middle ground: you get clean command/query separation, type-safe results, automatic event dispatching, and transactional orchestration — without being forced into full event sourcing. Use as much or as little as your project needs.
 
 ### Who is this for?
 
@@ -75,6 +75,15 @@ return [
 
 Existing top-level settings such as `zolta.commands` and `zolta.cache` remain supported during migration.
 
+### Namespace compatibility
+
+`talred/cqrs` exposes the public `Talred\Cqrs\...` namespaces while keeping
+the existing `Zolta\Cqrs\...` implementation and imports intact. New
+applications and examples should use `Talred\Cqrs\...`; existing applications
+can continue using `Zolta\Cqrs\...` during the staged migration. Technical
+runtime identifiers such as `zolta-cqrs-config`, `config/zolta.php`, and
+`zolta.*` configuration keys remain stable.
+
 ---
 
 ## Quick Start
@@ -82,7 +91,7 @@ Existing top-level settings such as `zolta.commands` and `zolta.cache` remain su
 ### 1. Define a command
 
 ```php
-use Zolta\Cqrs\Commands\Command;
+use Talred\Cqrs\Commands\Command;
 
 class CreateUserCommand extends Command
 {
@@ -97,8 +106,8 @@ class CreateUserCommand extends Command
 ### 2. Create a handler
 
 ```php
-use Zolta\Cqrs\Attributes\HandlesCommand;
-use Zolta\Cqrs\Services\Result;
+use Talred\Cqrs\Attributes\HandlesCommand;
+use Talred\Cqrs\Services\Result;
 
 #[HandlesCommand(CreateUserCommand::class)]
 class CreateUserHandler
@@ -129,7 +138,7 @@ class CreateUserHandler
 ### 3. Add validation (optional)
 
 ```php
-use Zolta\Cqrs\Attributes\ValidatesCommand;
+use Talred\Cqrs\Attributes\ValidatesCommand;
 
 #[ValidatesCommand(CreateUserCommand::class)]
 class CreateUserValidator
@@ -158,9 +167,9 @@ $userId = $result->getValue()['id'];
 ### 5. Query data
 
 ```php
-use Zolta\Cqrs\Queries\Query;
-use Zolta\Cqrs\Attributes\HandlesQuery;
-use Zolta\Cqrs\Services\Option;
+use Talred\Cqrs\Queries\Query;
+use Talred\Cqrs\Attributes\HandlesQuery;
+use Talred\Cqrs\Services\Option;
 
 class GetUserQuery extends Query
 {
@@ -360,19 +369,19 @@ The dominant costs in any request are your application logic — database querie
 
 ---
 
-## Part of the Zolta Ecosystem
+## Part of the Talred Ecosystem
 
-Zolta CQRS is the **application layer** — it bridges domain logic and transport:
+Talred CQRS is the **application layer** — it bridges domain logic and transport:
 
 ```
 ┌─────────────────────────────────────────────┐
-│  talred/http (Transport)                    │
+│  talred/http (Transport)                     │
 │  Attribute-driven routing & response        │
 ├─────────────────────────────────────────────┤
-│  talred/cqrs (Application) ← you are here  │
+│  talred/cqrs (Application) ← you are here   │
 │  Commands, queries, events, transactions    │
 ├─────────────────────────────────────────────┤
-│  talred/forge (Domain)                      │
+│  talred/forge (Domain)                       │
 │  Value Objects, rules, specs, entities      │
 └─────────────────────────────────────────────┘
 ```
@@ -381,9 +390,9 @@ When used together: **HTTP** resolves the pipeline via attributes → **Forge** 
 
 | Package        | Layer           | Link                               |
 | -------------- | --------------- | ---------------------------------- |
-| talred/forge    | Domain          | [`packages/forge`](../zolta-forge) |
+| talred/forge    | Domain          | [`packages/forge`](../forge) |
 | **talred/cqrs** | **Application** | You are here                       |
-| talred/http     | Transport       | [`packages/http`](../zolta-http)   |
+| talred/http     | Transport       | [`packages/http`](../http)   |
 
 ---
 
@@ -394,7 +403,7 @@ composer run qa          # Full suite: lint + analyse + phpmd + rector + test
 composer run test        # PHPUnit only
 ```
 
-**61 tests, 103 assertions** covering Result/Option monads, command and query bus dispatch, validator chains, event dispatching, message hydration, and argument resolution.
+**82 tests, 139 assertions** covering Result/Option monads, command and query bus dispatch, validator chains, event dispatching, message hydration, argument resolution, and Talred namespace compatibility.
 
 ---
 

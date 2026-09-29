@@ -13,7 +13,7 @@ The hydration system enables automatic construction of Commands, Queries, and Va
 ## MessageHydratorInterface
 
 ```php
-namespace Zolta\Cqrs\Hydration;
+namespace Talred\Cqrs\Hydration;
 
 interface MessageHydratorInterface
 {
@@ -33,7 +33,7 @@ If `$target` is already an object, it is returned as-is.
 The built-in hydrator with three resolution strategies:
 
 ```php
-namespace Zolta\Cqrs\Hydration;
+namespace Talred\Cqrs\Hydration;
 
 class DefaultMessageHydrator implements MessageHydratorInterface
 {
@@ -135,7 +135,7 @@ $result = $cqrs->ask(GetUserQuery::class, [
 The standard contract for extractable payloads:
 
 ```php
-namespace Zolta\Cqrs\Contracts;
+namespace Talred\Cqrs\Contracts;
 
 interface MessagePayloadInterface
 {
@@ -148,7 +148,7 @@ interface MessagePayloadInterface
 A simple array-based payload:
 
 ```php
-namespace Zolta\Cqrs\Payload;
+namespace Talred\Cqrs\Payload;
 
 class ArrayMessagePayload implements MessagePayloadInterface, JsonSerializable
 {
@@ -164,7 +164,7 @@ class ArrayMessagePayload implements MessagePayloadInterface, JsonSerializable
 Maps a command to a DTO for hydration routing:
 
 ```php
-namespace Zolta\Cqrs\Attributes;
+namespace Talred\Cqrs\Attributes;
 
 #[Attribute(Attribute::TARGET_CLASS)]
 class CommandMapping
@@ -197,7 +197,7 @@ class CreateUserHandler
 Maps a property or parameter from a specific source key:
 
 ```php
-namespace Zolta\Cqrs\Attributes;
+namespace Talred\Cqrs\Attributes;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_PARAMETER)]
 class MapFrom
@@ -220,7 +220,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Hydration;
 
-use Zolta\Cqrs\Hydration\MessageHydratorInterface;
+use Talred\Cqrs\Hydration\MessageHydratorInterface;
 
 class AutoMapperHydrator implements MessageHydratorInterface
 {

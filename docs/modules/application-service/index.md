@@ -13,7 +13,7 @@ The `ApplicationService` is the top-level orchestration layer. It coordinates mu
 ## Constructor
 
 ```php
-namespace Zolta\Cqrs\Services\Pipeline;
+namespace Talred\Cqrs\Services\Pipeline;
 
 class ApplicationService
 {
@@ -205,7 +205,7 @@ $this->dispatchEvents([
 Signals the CqrsProxy to resolve a value from the capture store before dispatch:
 
 ```php
-namespace Zolta\Cqrs\Services;
+namespace Talred\Cqrs\Services;
 
 class MapPlaceholder
 {
@@ -235,7 +235,7 @@ $this->cqrs()->dispatch(new CreateProfileCommand(
 The proxy wraps the core CQRS service to enable automatic placeholder resolution and result capture:
 
 ```php
-namespace Zolta\Cqrs\Services;
+namespace Talred\Cqrs\Services;
 
 class CqrsProxy implements CqrsServiceInterface
 {
@@ -268,8 +268,8 @@ use App\Application\Commands\CreateUser\CreateUserCommand;
 use App\Application\Commands\AssignRole\AssignRoleCommand;
 use App\Application\Queries\GetUser\GetUserQuery;
 use App\Application\DTO\UserResponse;
-use Zolta\Cqrs\Services\MapPlaceholder;
-use Zolta\Cqrs\Services\Pipeline\ApplicationService;
+use Talred\Cqrs\Services\MapPlaceholder;
+use Talred\Cqrs\Services\Pipeline\ApplicationService;
 
 class UserRegistrationService
 {

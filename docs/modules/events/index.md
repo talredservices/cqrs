@@ -8,7 +8,7 @@ navigation:
 
 # Events
 
-Zolta CQRS provides a domain event system that integrates with framework-level event dispatchers. Domain events are recorded by aggregates during command execution and automatically dispatched by the `EventDispatchingCommandBus`.
+Talred CQRS provides a domain event system that integrates with framework-level event dispatchers. Domain events are recorded by aggregates during command execution and automatically dispatched by the `EventDispatchingCommandBus`.
 
 ## Event lifecycle
 
@@ -23,7 +23,7 @@ Zolta CQRS provides a domain event system that integrates with framework-level e
 ## EventDispatcherInterface
 
 ```php
-namespace Zolta\Cqrs\Events\Contracts;
+namespace Talred\Cqrs\Events\Contracts;
 
 interface EventDispatcherInterface
 {
@@ -36,7 +36,7 @@ interface EventDispatcherInterface
 ## EventHandlerInterface
 
 ```php
-namespace Zolta\Cqrs\Events\Contracts;
+namespace Talred\Cqrs\Events\Contracts;
 
 interface EventHandlerInterface
 {
@@ -49,7 +49,7 @@ interface EventHandlerInterface
 The core dispatcher multiplexes events to multiple sub-dispatchers:
 
 ```php
-namespace Zolta\Cqrs\Events;
+namespace Talred\Cqrs\Events;
 
 class EventDispatcher implements EventDispatcherInterface
 {
@@ -61,7 +61,7 @@ class EventDispatcher implements EventDispatcherInterface
 }
 ```
 
-This dispatcher forwards events to all registered sub-dispatchers, allowing integration with both Zolta's event system and the host framework's native events.
+This dispatcher forwards events to all registered sub-dispatchers, allowing integration with both Talred's event system and the host framework's native events.
 
 ## Defining domain events
 
@@ -74,7 +74,7 @@ declare(strict_types=1);
 
 namespace App\Domain\Events;
 
-use Zolta\Domain\Events\Contracts\EventInterface;
+use Talred\Domain\Events\Contracts\EventInterface;
 
 final readonly class UserCreatedEvent implements EventInterface
 {
@@ -94,7 +94,7 @@ final readonly class UserCreatedEvent implements EventInterface
 ## Recording events in aggregates
 
 ```php
-use Zolta\Domain\Aggregates\AggregateRoot;
+use Talred\Domain\Aggregates\AggregateRoot;
 
 class User extends AggregateRoot
 {
@@ -151,7 +151,7 @@ class CreateUserHandler
 ### Via `#[HandlesDomainEvent]` attribute
 
 ```php
-use Zolta\Cqrs\Events\Attributes\HandlesDomainEvent;
+use Talred\Cqrs\Events\Attributes\HandlesDomainEvent;
 
 #[HandlesDomainEvent(UserCreatedEvent::class)]
 class SendWelcomeEmailListener implements EventHandlerInterface
@@ -208,10 +208,10 @@ $dispatcher->registerListeners([
 
 ## Laravel integration
 
-The `LaravelEventDispatcher` bridges Zolta events with Laravel's event system:
+The `LaravelEventDispatcher` bridges Talred events with Laravel's event system:
 
 ```php
-namespace Zolta\Cqrs\Adapters\Laravel\Services;
+namespace Talred\Cqrs\Adapters\Laravel\Services;
 
 class LaravelEventDispatcher implements EventDispatcherInterface
 {
@@ -227,7 +227,7 @@ class LaravelEventDispatcher implements EventDispatcherInterface
 ```
 
 This means domain events can be handled by both:
-- Zolta `#[HandlesDomainEvent]` listeners
+- Talred `#[HandlesDomainEvent]` listeners
 - Standard Laravel event listeners and subscribers
 
 ## Dispatching events manually

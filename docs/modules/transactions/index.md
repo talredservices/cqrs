@@ -8,12 +8,12 @@ navigation:
 
 # Transactions
 
-Zolta CQRS provides a `TransactionManagerInterface` for framework-agnostic transaction management. The `ApplicationService` uses it to automatically commit or rollback based on operation outcomes.
+Talred CQRS provides a `TransactionManagerInterface` for framework-agnostic transaction management. The `ApplicationService` uses it to automatically commit or rollback based on operation outcomes.
 
 ## TransactionManagerInterface
 
 ```php
-namespace Zolta\Cqrs\Contracts;
+namespace Talred\Cqrs\Contracts;
 
 interface TransactionManagerInterface
 {
@@ -36,7 +36,7 @@ interface TransactionManagerInterface
 The Laravel implementation using `DB` facade:
 
 ```php
-namespace Zolta\Cqrs\Adapters\Laravel\Database;
+namespace Talred\Cqrs\Adapters\Laravel\Database;
 
 use Illuminate\Support\Facades\DB;
 
@@ -198,7 +198,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Database;
 
-use Zolta\Cqrs\Contracts\TransactionManagerInterface;
+use Talred\Cqrs\Contracts\TransactionManagerInterface;
 
 class DoctrineTransactionManager implements TransactionManagerInterface
 {

@@ -1,6 +1,6 @@
 ---
 title: Advanced
-description: Internals, extension points, and advanced patterns for Zolta CQRS.
+description: Internals, extension points, and advanced patterns for Talred CQRS.
 navigation:
   title: Advanced
   order: 11
@@ -13,7 +13,7 @@ navigation:
 The `CommandBusFactory` assembles the complete decorator chain:
 
 ```php
-namespace Zolta\Cqrs\Factories;
+namespace Talred\Cqrs\Factories;
 
 class CommandBusFactory
 {
@@ -42,7 +42,7 @@ The factory builds this chain:
 Scans PHP files for `#[HandlesCommand]` and `#[ValidatesCommand]` attributes:
 
 ```php
-namespace Zolta\Cqrs\Factories;
+namespace Talred\Cqrs\Factories;
 
 class CommandMapFactory
 {
@@ -111,7 +111,7 @@ The `ZoltaCqrsServiceProvider` orchestrates sub-providers in this order:
 The core service that routes dispatches:
 
 ```php
-namespace Zolta\Cqrs\Services;
+namespace Talred\Cqrs\Services;
 
 class Cqrs implements CqrsServiceInterface
 {
@@ -245,8 +245,8 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\CommandBus;
 
-use Zolta\Cqrs\Commands\Contracts\CommandBusInterface;
-use Zolta\Cqrs\Commands\Contracts\CommandInterface;
+use Talred\Cqrs\Commands\Contracts\CommandBusInterface;
+use Talred\Cqrs\Commands\Contracts\CommandInterface;
 
 class LoggingCommandBus implements CommandBusInterface
 {

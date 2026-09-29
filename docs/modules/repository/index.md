@@ -8,7 +8,7 @@ navigation:
 
 # Repository
 
-Zolta CQRS provides a layered repository abstraction: a framework-agnostic `AbstractRepository` base with pluggable query building, and an Eloquent adapter for Laravel.
+Talred CQRS provides a layered repository abstraction: a framework-agnostic `AbstractRepository` base with pluggable query building, and an Eloquent adapter for Laravel.
 
 ## Architecture
 
@@ -27,7 +27,7 @@ AbstractRepository (framework-agnostic)
 The base class all repositories extend:
 
 ```php
-namespace Zolta\Cqrs\Repositories\Query\Services;
+namespace Talred\Cqrs\Repositories\Query\Services;
 
 abstract class AbstractRepository
 {
@@ -87,7 +87,7 @@ abstract class AbstractRepository
 Defines the query rules for a repository:
 
 ```php
-namespace Zolta\Cqrs\Repositories\Query\Interfaces;
+namespace Talred\Cqrs\Repositories\Query\Interfaces;
 
 class QueryDefinition
 {
@@ -138,7 +138,7 @@ protected function queryDefinition(): QueryDefinition
 A structured, immutable query object:
 
 ```php
-namespace Zolta\Cqrs\Repositories\Query;
+namespace Talred\Cqrs\Repositories\Query;
 
 class RepositoryQuery
 {
@@ -169,7 +169,7 @@ class RepositoryQuery
 A convenient payload container for passing query parameters:
 
 ```php
-namespace Zolta\Cqrs\Repositories\Query;
+namespace Talred\Cqrs\Repositories\Query;
 
 class QueryOptions extends AbstractQueryOptions
 {
@@ -196,7 +196,7 @@ $options = new QueryOptions([
 The Laravel Eloquent implementation:
 
 ```php
-namespace Zolta\Cqrs\Adapters\Laravel\Eloquent;
+namespace Talred\Cqrs\Adapters\Laravel\Eloquent;
 
 abstract class EloquentBaseRepository extends AbstractRepository
 {
@@ -226,8 +226,8 @@ namespace App\Infrastructure\Repositories;
 
 use App\Domain\Aggregates\User;
 use App\Domain\Repositories\UserRepositoryInterface;
-use Zolta\Cqrs\Adapters\Laravel\Eloquent\EloquentBaseRepository;
-use Zolta\Cqrs\Repositories\Query\Interfaces\QueryDefinition;
+use Talred\Cqrs\Adapters\Laravel\Eloquent\EloquentBaseRepository;
+use Talred\Cqrs\Repositories\Query\Interfaces\QueryDefinition;
 
 class EloquentUserRepository extends EloquentBaseRepository implements UserRepositoryInterface
 {
@@ -285,7 +285,7 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
 #### FilterInterface
 
 ```php
-namespace Zolta\Cqrs\Repositories\Filters;
+namespace Talred\Cqrs\Repositories\Filters;
 
 interface FilterInterface
 {
@@ -298,7 +298,7 @@ interface FilterInterface
 Pre-built filter for date range queries:
 
 ```php
-use Zolta\Cqrs\Repositories\Filters\DateRangeFilter;
+use Talred\Cqrs\Repositories\Filters\DateRangeFilter;
 
 // Usage in repository configuration
 protected array $filterOperators = [
@@ -311,7 +311,7 @@ protected array $filterOperators = [
 Pre-built filter for text search across multiple columns:
 
 ```php
-use Zolta\Cqrs\Repositories\Filters\SearchFilter;
+use Talred\Cqrs\Repositories\Filters\SearchFilter;
 ```
 
 ### Filter operators

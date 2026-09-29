@@ -1,14 +1,18 @@
 ---
-title: Zolta CQRS
+title: Talred CQRS
 description: A full-featured Command Query Responsibility Segregation framework for PHP 8.2+ with automatic handler discovery, decorator-based middleware, transaction management, and repository caching.
 navigation:
   title: Introduction
   order: 0
 ---
 
-# Zolta CQRS
+# Talred CQRS
 
-Zolta CQRS is the **application layer** of the Zolta framework. It provides a complete CQRS (Command Query Responsibility Segregation) implementation with automatic handler discovery via PHP attributes, a decorator-based command bus pipeline, Result/Option monads, repository abstractions with built-in caching, and full transaction management.
+Talred CQRS is the **application layer** of the Talred framework. It provides a complete CQRS (Command Query Responsibility Segregation) implementation with automatic handler discovery via PHP attributes, a decorator-based command bus pipeline, Result/Option monads, repository abstractions with built-in caching, and full transaction management.
+
+The public namespace is `Talred\Cqrs\...`. It is an additive compatibility
+layer over the existing `Zolta\Cqrs\...` implementation, so current
+applications can keep their Zolta imports while new code adopts Talred imports.
 
 ## Architecture overview
 
@@ -84,7 +88,7 @@ WorkerAwareRoutingCommandBus
 | **talred/cqrs** | Application | Commands, Queries, Events, Repositories, Transactions |
 | **talred/http** | API | Routing, Request/Response, Authorization |
 
-Zolta CQRS builds on top of talred/forge's domain primitives and provides the application-layer orchestration consumed by talred/http's API handlers.
+Talred CQRS builds on top of talred/forge's domain primitives and provides the application-layer orchestration consumed by talred/http's API handlers.
 
 ## Key features
 

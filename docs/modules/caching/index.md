@@ -8,7 +8,7 @@ navigation:
 
 # Caching
 
-Zolta CQRS includes a repository caching layer that transparently caches read operations with hashed cache keys and namespace-scoped invalidation.
+Talred CQRS includes a repository caching layer that transparently caches read operations with hashed cache keys and namespace-scoped invalidation.
 
 ## Architecture
 
@@ -30,7 +30,7 @@ Repository.all() / .first() / .show()
 The cache interface used by repositories:
 
 ```php
-namespace Zolta\Cqrs\Repositories\Cache;
+namespace Talred\Cqrs\Repositories\Cache;
 
 interface RepositoryCache
 {
@@ -59,7 +59,7 @@ interface RepositoryCache
 Generates deterministic cache keys from namespace and parameters:
 
 ```php
-namespace Zolta\Cqrs\Repositories\Cache;
+namespace Talred\Cqrs\Repositories\Cache;
 
 interface CacheKeyGenerator
 {
@@ -73,7 +73,7 @@ interface CacheKeyGenerator
 The default implementation using MD5 hashing:
 
 ```php
-namespace Zolta\Cqrs\Repositories\Cache;
+namespace Talred\Cqrs\Repositories\Cache;
 
 final class HashedCacheKeyGenerator implements CacheKeyGenerator
 {
@@ -115,7 +115,7 @@ $key = $generator->generate('users.roles', [
 A no-op cache implementation for disabling caching:
 
 ```php
-namespace Zolta\Cqrs\Repositories\Cache;
+namespace Talred\Cqrs\Repositories\Cache;
 
 class NullRepositoryCache implements RepositoryCache
 {
@@ -206,8 +206,8 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Cache;
 
-use Zolta\Cqrs\Repositories\Cache\RepositoryCache;
-use Zolta\Cqrs\Repositories\Cache\HashedCacheKeyGenerator;
+use Talred\Cqrs\Repositories\Cache\RepositoryCache;
+use Talred\Cqrs\Repositories\Cache\HashedCacheKeyGenerator;
 
 class RedisRepositoryCache implements RepositoryCache
 {

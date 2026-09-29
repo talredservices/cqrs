@@ -7,7 +7,16 @@ This project adheres to Semantic Versioning.
 
 ---
 
-## [Unreleased]
+## [2.1.2] - 2026-09-28
+
+### Added
+- Added additive `Talred\Cqrs\...` namespace aliases backed by the existing `Zolta\Cqrs\...` implementation.
+- Added compatibility coverage for CQRS classes, interfaces, attributes, traits, and Result behavior.
+
+### Changed
+- Renamed the public Composer package coordinate to `talred/cqrs` and switched its Forge dependency to `talred/forge`.
+- Declared `zolta/cqrs` as a replaced package for dependency compatibility.
+- Updated public README and documentation examples to use Talred naming while retaining technical Zolta runtime identifiers.
 
 ---
 
@@ -85,10 +94,11 @@ This project adheres to Semantic Versioning.
 
 ## Version comparison links
 
-[Unreleased]: https://github.com/zoltasoft/cqrs/compare/v2.1.0...HEAD
-[2.1.0]: https://github.com/zoltasoft/cqrs/compare/v2.0.0...v2.1.0
-[2.0.0]: https://github.com/zoltasoft/cqrs/compare/v1.0.3...v2.0.0
-[1.0.3]: https://github.com/zoltasoft/cqrs/compare/v1.0.2...v1.0.3  
-[1.0.2]: https://github.com/zoltasoft/cqrs/compare/v1.0.1...v1.0.2  
-[1.0.1]: https://github.com/zoltasoft/cqrs/compare/v1.0.0...v1.0.1  
-[1.0.0]: https://github.com/zoltasoft/cqrs/releases/tag/v1.0.0
+[Unreleased]: https://github.com/talredservices/cqrs/compare/v2.1.2...HEAD
+[2.1.2]: https://github.com/talredservices/cqrs/compare/v2.1.1...v2.1.2
+[2.1.0]: https://github.com/talredservices/cqrs/compare/v2.0.0...v2.1.0
+[2.0.0]: https://github.com/talredservices/cqrs/compare/v1.0.3...v2.0.0
+[1.0.3]: https://github.com/talredservices/cqrs/compare/v1.0.2...v1.0.3
+[1.0.2]: https://github.com/talredservices/cqrs/compare/v1.0.1...v1.0.2
+[1.0.1]: https://github.com/talredservices/cqrs/compare/v1.0.0...v1.0.1
+[1.0.0]: https://github.com/talredservices/cqrs/releases/tag/v1.0.0

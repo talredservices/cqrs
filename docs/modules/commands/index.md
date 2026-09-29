@@ -15,7 +15,7 @@ Commands represent **write operations** that change application state. They flow
 The marker interface for all commands:
 
 ```php
-namespace Zolta\Cqrs\Commands\Contracts;
+namespace Talred\Cqrs\Commands\Contracts;
 
 interface CommandInterface
 {
@@ -26,7 +26,7 @@ interface CommandInterface
 ## Command base class
 
 ```php
-namespace Zolta\Cqrs\Commands;
+namespace Talred\Cqrs\Commands;
 
 abstract class Command implements CommandInterface
 {
@@ -45,7 +45,7 @@ declare(strict_types=1);
 
 namespace App\Application\Commands\CreateUser;
 
-use Zolta\Cqrs\Commands\Command;
+use Talred\Cqrs\Commands\Command;
 
 class CreateUserCommand extends Command
 {
@@ -60,7 +60,7 @@ class CreateUserCommand extends Command
 ## CommandBusInterface
 
 ```php
-namespace Zolta\Cqrs\Commands\Contracts;
+namespace Talred\Cqrs\Commands\Contracts;
 
 interface CommandBusInterface
 {
@@ -74,7 +74,7 @@ interface CommandBusInterface
 Handlers are discovered automatically via the `#[HandlesCommand]` attribute:
 
 ```php
-use Zolta\Cqrs\Attributes\HandlesCommand;
+use Talred\Cqrs\Attributes\HandlesCommand;
 
 #[HandlesCommand(CreateUserCommand::class)]
 class CreateUserHandler
@@ -117,8 +117,8 @@ The `ArgumentResolver` determines which method to call:
 Validators run **before** handlers. They are discovered via `#[ValidatesCommand]`:
 
 ```php
-use Zolta\Cqrs\Attributes\ValidatesCommand;
-use Zolta\Exceptions\ValidationException;
+use Talred\Cqrs\Attributes\ValidatesCommand;
+use Talred\Exceptions\ValidationException;
 
 #[ValidatesCommand(CreateUserCommand::class)]
 class CreateUserValidator
@@ -166,7 +166,7 @@ Validator method resolution follows the same rules as handlers, with `validate()
 Command handlers return `Result` to signal success or failure:
 
 ```php
-namespace Zolta\Cqrs\Services;
+namespace Talred\Cqrs\Services;
 
 class Result implements CommandResultInterface
 {
@@ -228,7 +228,7 @@ $result->getOrFail(
 ## CommandResultInterface
 
 ```php
-namespace Zolta\Cqrs\Commands\Contracts;
+namespace Talred\Cqrs\Commands\Contracts;
 
 interface CommandResultInterface
 {
@@ -310,8 +310,8 @@ The top-level bus that routes sync vs async:
 Mark a command as queueable:
 
 ```php
-use Zolta\Cqrs\Commands\Command;
-use Zolta\Cqrs\Commands\Interfaces\ShouldQueue;
+use Talred\Cqrs\Commands\Command;
+use Talred\Cqrs\Commands\Interfaces\ShouldQueue;
 
 class SendWelcomeEmailCommand extends Command implements ShouldQueue
 {

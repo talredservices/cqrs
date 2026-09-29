@@ -31,7 +31,7 @@ Handler class
 ## ArgumentResolver
 
 ```php
-namespace Zolta\Cqrs\Utils;
+namespace Talred\Cqrs\Utils;
 
 class ArgumentResolver
 {

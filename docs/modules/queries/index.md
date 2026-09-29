@@ -13,7 +13,7 @@ Queries represent **read operations** that retrieve data without changing state.
 ## QueryInterface
 
 ```php
-namespace Zolta\Cqrs\Queries\Contracts;
+namespace Talred\Cqrs\Queries\Contracts;
 
 interface QueryInterface
 {
@@ -24,7 +24,7 @@ interface QueryInterface
 ## Query base class
 
 ```php
-namespace Zolta\Cqrs\Queries;
+namespace Talred\Cqrs\Queries;
 
 abstract class Query implements QueryInterface
 {
@@ -45,7 +45,7 @@ declare(strict_types=1);
 
 namespace App\Application\Queries\GetUser;
 
-use Zolta\Cqrs\Queries\Query;
+use Talred\Cqrs\Queries\Query;
 
 class GetUserQuery extends Query
 {
@@ -58,7 +58,7 @@ class GetUserQuery extends Query
 ## QueryBusInterface
 
 ```php
-namespace Zolta\Cqrs\Queries\Contracts;
+namespace Talred\Cqrs\Queries\Contracts;
 
 interface QueryBusInterface
 {
@@ -72,7 +72,7 @@ interface QueryBusInterface
 The default query bus implementation:
 
 ```php
-namespace Zolta\Cqrs\Queries;
+namespace Talred\Cqrs\Queries;
 
 class InMemoryQueryBus implements QueryBusInterface
 {
@@ -95,7 +95,7 @@ class InMemoryQueryBus implements QueryBusInterface
 Query handlers are discovered via `#[HandlesQuery]`:
 
 ```php
-use Zolta\Cqrs\Attributes\HandlesQuery;
+use Talred\Cqrs\Attributes\HandlesQuery;
 
 #[HandlesQuery(GetUserQuery::class)]
 class GetUserHandler
@@ -141,7 +141,7 @@ class HandlesQuery
 Query handlers return `Option` to represent presence or absence of data:
 
 ```php
-namespace Zolta\Cqrs\Services;
+namespace Talred\Cqrs\Services;
 
 abstract class Option
 {

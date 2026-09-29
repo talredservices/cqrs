@@ -1,6 +1,6 @@
 ---
 title: Examples
-description: Real-world patterns and usage examples for Zolta CQRS.
+description: Real-world patterns and usage examples for Talred CQRS.
 navigation:
   title: Examples
   order: 10
@@ -227,7 +227,7 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
 ### Queueable command
 
 ```php
-use Zolta\Cqrs\Commands\Interfaces\ShouldQueue;
+use Talred\Cqrs\Commands\Interfaces\ShouldQueue;
 
 class SendWelcomeEmailCommand extends Command implements ShouldQueue
 {
