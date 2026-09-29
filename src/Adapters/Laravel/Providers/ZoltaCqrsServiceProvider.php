@@ -33,29 +33,51 @@ class ZoltaCqrsServiceProvider extends ServiceProvider
         $this->mergeConfigFrom($configPath, 'zolta');
 
         $defaults = (array) (require $configPath);
-        $configured = (array) config('zolta', []);
+        $zoltaConfigured = (array) config('zolta', []);
+        $talredConfigured = $this->app['config']->has('talred')
+            ? (array) config('talred', [])
+            : [];
+        $configured = $this->mergeConfigRecursively($zoltaConfigured, $talredConfigured);
 
-        $legacy = [];
+        $zoltaLegacy = [];
         foreach (self::LEGACY_CQRS_KEYS as $key) {
-            if (array_key_exists($key, $configured)) {
-                $legacy[$key] = $configured[$key];
+            if (array_key_exists($key, $zoltaConfigured)) {
+                $zoltaLegacy[$key] = $zoltaConfigured[$key];
             }
         }
 
         $configured['cqrs'] = $this->mergeConfigRecursively(
             (array) ($defaults['cqrs'] ?? []),
-            (array) ($configured['cqrs'] ?? []),
+            (array) ($zoltaConfigured['cqrs'] ?? []),
         );
         $configured['cqrs'] = $this->mergeConfigRecursively(
             $configured['cqrs'],
-            $legacy,
+            $zoltaLegacy,
+        );
+        $configured['cqrs'] = $this->mergeConfigRecursively(
+            $configured['cqrs'],
+            (array) ($talredConfigured['cqrs'] ?? []),
+        );
+
+        $talredLegacy = [];
+        foreach (self::LEGACY_CQRS_KEYS as $key) {
+            if (array_key_exists($key, $talredConfigured)) {
+                $talredLegacy[$key] = $talredConfigured[$key];
+            }
+        }
+        $configured['cqrs'] = $this->mergeConfigRecursively(
+            $configured['cqrs'],
+            $talredLegacy,
         );
 
         foreach (self::LEGACY_CQRS_KEYS as $key) {
             $configured[$key] = $configured['cqrs'][$key] ?? ($configured[$key] ?? null);
         }
 
+        // Talred is the public configuration surface; zolta remains a
+        // mirrored technical compatibility surface for existing consumers.
         $this->app['config']->set('zolta', $configured);
+        $this->app['config']->set('talred', $configured);
 
         // Transaction support
         $this->app->bind(TransactionManagerInterface::class, LaravelTransactionManager::class);
@@ -88,6 +110,10 @@ class ZoltaCqrsServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/zolta.php' => config_path('zolta.php'),
         ], 'zolta-cqrs-config');
+
+        $this->publishes([
+            __DIR__.'/../config/zolta.php' => config_path('talred.php'),
+        ], 'talred-cqrs-config');
     }
 
     /**

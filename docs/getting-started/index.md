@@ -23,8 +23,9 @@ composer require talred/cqrs
 
 Use `Talred\Cqrs\...` namespaces in new code. Existing `Zolta\Cqrs\...`
 imports remain supported by the compatibility layer while the package is
-migrated in stages. The Laravel publish tag and `config/zolta.php` filename
-remain technical compatibility identifiers.
+migrated in stages. The Talred publish tag and `config/talred.php` file are
+the preferred public configuration surface; the Zolta publish tag and
+`config/zolta.php` remain technical compatibility identifiers.
 
 The package auto-discovers the Laravel service provider via Composer's `extra.laravel` metadata. No manual registration is needed.
 
@@ -33,10 +34,10 @@ The package auto-discovers the Laravel service provider via Composer's `extra.la
 Publish the configuration file:
 
 ```bash
-php artisan vendor:publish --tag=zolta-cqrs-config
+php artisan vendor:publish --tag=talred-cqrs-config
 ```
 
-This creates `config/zolta.php`. New applications should nest CQRS settings under `cqrs`:
+This creates `config/talred.php`. New applications should nest CQRS settings under `cqrs`:
 
 ```php
 return [
@@ -59,7 +60,7 @@ return [
 ];
 ```
 
-Existing top-level CQRS settings, such as `zolta.commands` and `zolta.cache`, remain supported for backwards compatibility. New configuration should use `zolta.cqrs.*`.
+Existing top-level CQRS settings, such as `zolta.commands` and `zolta.cache`, remain supported for backwards compatibility. New configuration should use `talred.cqrs.*`; resolved values remain mirrored under `zolta.cqrs.*` and the legacy aliases.
 
 ## Project structure
 

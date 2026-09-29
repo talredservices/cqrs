@@ -7,6 +7,17 @@ This project adheres to Semantic Versioning.
 
 ---
 
+## [2.1.3] - 2026-09-28
+
+### Added
+
+- Added the additive `talred-cqrs-config` publish tag and `config/talred.php` configuration surface.
+- Added support for `talred.cqrs.*` with mirrored Zolta and legacy aliases.
+
+### Changed
+
+- Talred configuration values take precedence when both Talred and Zolta roots are configured.
+
 ## [2.1.2] - 2026-09-28
 
 ### Added
@@ -94,7 +105,8 @@ This project adheres to Semantic Versioning.
 
 ## Version comparison links
 
-[Unreleased]: https://github.com/talredservices/cqrs/compare/v2.1.2...HEAD
+[Unreleased]: https://github.com/talredservices/cqrs/compare/v2.1.3...HEAD
+[2.1.3]: https://github.com/talredservices/cqrs/compare/v2.1.2...v2.1.3
 [2.1.2]: https://github.com/talredservices/cqrs/compare/v2.1.1...v2.1.2
 [2.1.0]: https://github.com/talredservices/cqrs/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/talredservices/cqrs/compare/v1.0.3...v2.0.0

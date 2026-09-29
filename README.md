@@ -58,10 +58,10 @@ Laravel auto-discovers the service provider. No manual registration needed.
 ### Publish configuration
 
 ```bash
-php artisan vendor:publish --tag=zolta-cqrs-config
+php artisan vendor:publish --tag=talred-cqrs-config
 ```
 
-This creates `config/zolta.php`. New applications should put CQRS settings below the `cqrs` key:
+This creates `config/talred.php`. New applications should put CQRS settings below the `cqrs` key:
 
 ```php
 return [
@@ -73,16 +73,18 @@ return [
 ];
 ```
 
-Existing top-level settings such as `zolta.commands` and `zolta.cache` remain supported during migration.
+Existing top-level settings such as `zolta.commands` and `zolta.cache` remain supported during migration. New configuration should use `talred.cqrs.*`; resolved values are mirrored to `zolta.cqrs.*` and the legacy aliases. The original `zolta-cqrs-config` tag and `config/zolta.php` file remain available.
 
 ### Namespace compatibility
 
 `talred/cqrs` exposes the public `Talred\Cqrs\...` namespaces while keeping
 the existing `Zolta\Cqrs\...` implementation and imports intact. New
 applications and examples should use `Talred\Cqrs\...`; existing applications
-can continue using `Zolta\Cqrs\...` during the staged migration. Technical
-runtime identifiers such as `zolta-cqrs-config`, `config/zolta.php`, and
-`zolta.*` configuration keys remain stable.
+can continue using `Zolta\Cqrs\...` during the staged migration. The Talred
+publish tag and `config/talred.php` file are the preferred public
+configuration surface. Technical runtime identifiers such as
+`zolta-cqrs-config`, `config/zolta.php`, and `zolta.*` configuration keys
+remain stable.
 
 ---
 
